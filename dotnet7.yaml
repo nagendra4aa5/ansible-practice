@@ -1,0 +1,18 @@
+---
+- name: install dotnet7
+  hosts: all
+  become: yes
+  tasks:
+    - name: download dotnet url
+      ansible.builtin.get_url:
+        url: "https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb"
+        dest: /home/ansible
+    - name: package installation
+      ansible.builtin.dpkg_selections:
+        name: packages-microsoft-prod.deb
+        selection: install  
+    - name: Install nodejs
+       ansible.builtin.apt:
+       name: nodejs
+       state: present      
+        

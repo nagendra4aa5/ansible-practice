@@ -1,0 +1,13 @@
+---
+-  name: installing nodejs
+   hosts: all
+   become: yes
+   tasks:
+     - name: Install epel repository
+       ansible.builtin.yum:
+         name: epel-release
+         state: present
+     - name: Install nodejs
+       ansible.builtin.yum:
+         name: nodejs
+         state: present

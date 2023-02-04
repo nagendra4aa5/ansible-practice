@@ -1,0 +1,20 @@
+---
+- name: install java11
+  hosts: all
+  become: yes
+  tasks:
+    - name: java installation
+      ansible.builtin.apt:
+        name: openjdk-11-jdk
+        update_cache: yes
+        state: present
+    - name: add tomcat user
+      ansible.builtin.user:
+        name: tomcat
+        group: tomcat
+        home: /opt/tomcat
+        shell: /bin/false
+        state: present
+      ansible.builtin.get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
+        dest: /tmp

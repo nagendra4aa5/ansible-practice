@@ -1,0 +1,46 @@
+---
+- name: install java13
+  hosts: all
+  become: yes
+  tasks:
+    - name: download java tar file
+      ansible.builtin.get_url:
+        url: https://download.java.net/openjdk/jdk13/ri/openjdk-13+33_linux-x64_bin.tar.gz
+        dest: /home/ansible
+    - name: create directory
+      ansible.builtin.file:
+        path: /usr/java
+        state: directory
+        mode: '777'
+    - name: copy java file
+      ansible.builtin.copy:
+        src: /home/ansible/openjdk-13+33_linux-x64_bin.tar.gz
+        dest: /usr/java
+        remote_src: yes
+    - name: untar java file
+      ansible.builtin.unarchive:
+        src: /usr/java/openjdk-13+33_linux-x64_bin.tar.gz
+        dest: /usr/java
+        remote_src: yes  
+    - name: add java path 
+      ansible.builtin.blockinfile:
+        path: /etc/profile
+        block: |   
+          JAVA_HOME=/usr/java/jdk-13.0.2
+          PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+          export JAVA_HOME
+          export PATH
+    - name: Configure alternmatives for java
+      community.general.alternatives:
+        name: java
+        path: /usr/java/jdk-13/bin/java
+        link: /usr/bin/java
+        state: present
+    - name: Configure alternatives for javac
+      community.general.alternatives:
+        name: java
+        path: /usr/java/jdk-13/bin/javac  
+        link: /usr/bin/javac
+        state: present   
+
+              
