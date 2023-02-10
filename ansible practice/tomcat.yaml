@@ -19,3 +19,13 @@
       ansible.builtin.get_url:
         url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27.tar.gz
         dest: /tmp
+    - name: Extract the tomcat file
+      ansible.builtin.unarchive:
+        src: /tmp/apache-tomcat-10.0.27.tar.gz
+        dest: /opt/tomcat
+    - name: Create a symbolic link
+      ansible.builtin.file:
+        path: /opt/tomcat
+        src: /opt/tomcat/apache-tomcat-10.0.27.tar.gz
+        dest: /opt/tomcat/latest
+        state: link
