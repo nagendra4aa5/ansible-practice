@@ -1,0 +1,10 @@
+trigger:
+- main
+
+pool: 
+  vmImage: ubuntu-latest
+
+jobs:
+- job: memory utilization
+  steps:
+  - script: df -h
