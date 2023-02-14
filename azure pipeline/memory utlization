@@ -5,6 +5,6 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: memory utilization
+- job: memory utilizations
   steps:
   - script: df -h
