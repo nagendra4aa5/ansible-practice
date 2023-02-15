@@ -1,0 +1,10 @@
+---
+pool:
+    vmImage: 'ubuntu-latest'
+
+trigger:
+- main
+
+steps:
+- task:
+    
