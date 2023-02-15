@@ -1,0 +1,10 @@
+---
+pool:
+  name: default
+   
+trigger:
+- main
+
+steps:
+- task:
+    script: ansible-playbook -i hosts openjdk17.yaml
