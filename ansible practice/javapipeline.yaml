@@ -3,8 +3,8 @@ pool:
   name: default
    
 trigger:
-- main
+- master
 
 steps:
-- task:
-    script: ansible-playbook -i hosts openjdk17.yaml
+- script: ansible-playbook -i hosts spring.yaml
+  workingDirectory: ./spring

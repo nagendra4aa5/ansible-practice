@@ -1,3 +1,4 @@
+---
 - name: install java server on ubuntu
   hosts: all
   become: yes
@@ -6,4 +7,20 @@
       ansible.builtin.apt:
         name: openjdk-17-jdk
         state: latest
-        update_cache : true
+        update_cache: yes
+    - name: download url
+      ansible.builtin.get_url:
+        dest: /home/ubuntu 
+        url: https://nn4a5.s3.us-east-2.amazonaws.com/spring-petclinic-3.0.0-SNAPSHOT.jar
+    - name: copy the service file
+      ansible.builtin.copy:
+        src: /spc.service
+        dest: /etc/systemd/system
+        remote_src: yes
+    - name: demon reload
+      systemd:
+        name: spc.service
+        daemon_reload: yes
+        state: started
+        enabled: yes
+      

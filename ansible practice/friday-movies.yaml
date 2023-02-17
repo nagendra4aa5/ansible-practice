@@ -1,0 +1,22 @@
+---
+- name: friday releasing movies
+- movies list:
+  - movie_name: sir
+      director: venky atluri
+      producer: surya devara naga vamsi
+      music: g v prakash kumar
+      cast:
+        - dhanush
+        - samyuktha menon
+        - sai kumar 
+        - tanikella bharani
+
+  - movie_name: Quantumania
+      director: peyton reed
+      producer: kevin fiege
+      cast:
+        - Kathryn Newton
+        - Jonathan Majors
+        - Evangeline Lilly
+        - Tony McCarthy
+        - Bill Murray
