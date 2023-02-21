@@ -17,6 +17,6 @@ steps:
     mavenVersionOption: 'path'
     mavenDirectory: /usr/share/maven/bin
     displayName: 'mvn package'
-
+- script: aws s3 cp /home/ubuntu/myagent/_work/1/s/target/spring-petclinic-2.7.3.jar s3://nnp4a5 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --recursive
 
 

@@ -1,0 +1,10 @@
+---
+pool:
+  name: default
+   
+trigger:
+- master
+
+steps:
+  - templates: 
+  
