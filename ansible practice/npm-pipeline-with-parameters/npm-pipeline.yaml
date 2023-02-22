@@ -6,5 +6,6 @@ trigger:
 - master
 
 steps:
-  - templates: 
-  
+  - templates:
+
+  \
