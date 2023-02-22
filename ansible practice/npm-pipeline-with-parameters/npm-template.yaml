@@ -50,6 +50,11 @@ parameters:
     type: string
     default: path
 
+  - name: mavenAuthenticateFeed 
+    displayName: mavenAuthenticateFeed
+    type: boolean
+    default: false
+
 
 
 
